@@ -6,5 +6,5 @@ patchesStrategicMerge:
   - deployment-patch.yaml
 
 images:
-  - name: docker.io/your-dockerhub/demo-app
+  - name: docker.io/aminse82/demo-app
     newTag: v1-stage

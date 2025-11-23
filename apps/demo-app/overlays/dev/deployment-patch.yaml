@@ -9,7 +9,7 @@ spec:
     spec:
       containers:
       - name: demo
-        image: docker.io/your-dockerhub/demo-app:v1-dev
+        image: docker.io/aminse82/demo-app:v1-dev
         env:
         - name: ENV
           value: "dev"
