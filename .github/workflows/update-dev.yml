@@ -17,14 +17,17 @@ jobs:
           token: ${{ secrets.GH_PAT }}
           ref: main
 
-      - name: Install yq
-        run: sudo apt-get update && sudo apt-get install -y jq yq
+      - name: Install yq (Go version)
+        run: |
+          sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
+          sudo chmod +x /usr/bin/yq
 
       - name: Update Kustomize image tag for dev
         run: |
           yq -i '.images[0].newTag = strenv(IMAGE_TAG)' apps/demo-app/overlays/dev/kustomization.yaml
         env:
           IMAGE_TAG: ${{ github.event.inputs.image_tag }}
+
 
       - name: Commit & Push
         run: |
