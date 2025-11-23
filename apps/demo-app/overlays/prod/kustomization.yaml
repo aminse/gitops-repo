@@ -1,0 +1,10 @@
+
+bases:
+  - ../../base
+
+patchesStrategicMerge:
+  - deployment-patch.yaml
+
+images:
+  - name: docker.io/your-dockerhub/demo-app
+    newTag: v1

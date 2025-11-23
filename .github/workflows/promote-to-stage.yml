@@ -1,0 +1,21 @@
+
+name: Promote to Stage
+
+on:
+  workflow_dispatch:
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create PR dev -> stage
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: "main"
+          destination_branch: "stage"
+          github_token: ${{ secrets.GH_PAT }}
+          pr_title: "Promote main -> stage"
+          pr_body: "Promotion from main (dev) to stage"

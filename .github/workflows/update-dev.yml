@@ -1,0 +1,35 @@
+
+name: Update Dev Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        required: true
+        type: string
+
+jobs:
+  update-dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install yq
+        run: sudo apt-get update && sudo apt-get install -y jq yq
+
+      - name: Update Kustomize image tag for dev
+        run: |
+          yq -i '.images[0].newTag = strenv(IMAGE_TAG)' apps/demo-app/overlays/dev/kustomization.yaml
+        env:
+          IMAGE_TAG: ${{ github.event.inputs.image_tag }}
+
+      - name: Commit & Push
+        run: |
+          git config user.name "GitOps Bot"
+          git config user.email "gitops-bot@your-org.com"
+          git add apps/demo-app/overlays/dev/kustomization.yaml
+          git commit -m "chore: update demo-app dev image to ${{ github.event.inputs.image_tag }}" || echo "no changes to commit"
+          git push origin HEAD:main
+        env:
+          GIT_TOKEN: ${{ secrets.GH_PAT }}

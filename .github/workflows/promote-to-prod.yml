@@ -1,0 +1,21 @@
+
+name: Promote to Prod
+
+on:
+  workflow_dispatch:
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create PR stage -> prod
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: "stage"
+          destination_branch: "prod"
+          github_token: ${{ secrets.GH_PAT }}
+          pr_title: "Promote stage -> prod"
+          pr_body: "Promotion from stage to prod"

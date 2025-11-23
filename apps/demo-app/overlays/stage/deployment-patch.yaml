@@ -1,0 +1,15 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+      - name: demo
+        image: docker.io/your-dockerhub/demo-app:v1-stage
+        env:
+        - name: ENV
+          value: "stage"

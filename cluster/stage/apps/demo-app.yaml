@@ -1,0 +1,19 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-app-stage
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/your-org/gitops-repo
+    targetRevision: main
+    path: apps/demo-app/overlays/stage
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: demo-app-stage
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
