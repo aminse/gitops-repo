@@ -1,10 +1,8 @@
 
 bases:
   - ../../base
-
 patchesStrategicMerge:
   - deployment-patch.yaml
-
 images:
   - name: docker.io/aminse82/demo-app
-    newTag: v1-dev
+    newTag: 47d5e61
