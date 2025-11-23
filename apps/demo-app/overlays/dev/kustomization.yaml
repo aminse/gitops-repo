@@ -1,6 +1,10 @@
+namespace: demo-app-dev
 
 bases:
   - ../../base
+
+resources:
+  - namespace.yaml
 
 patchesStrategicMerge:
   - deployment-patch.yaml
