@@ -1,14 +1,10 @@
 namespace: demo-app-dev
-
 bases:
   - ../../base
-
 resources:
   - namespace.yaml
-
 patchesStrategicMerge:
   - deployment-patch.yaml
-  
 images:
   - name: docker.io/aminse82/demo-app
-    newTag: v1-dev
+    newTag: cb3764d
