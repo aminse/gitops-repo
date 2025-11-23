@@ -7,4 +7,4 @@ patchesStrategicMerge:
   - deployment-patch.yaml
 images:
   - name: docker.io/aminse82/demo-app
-    newTag: cb3764d
+    newTag: b21c867fe1988abae2017d25ac56c204b4c5c219
