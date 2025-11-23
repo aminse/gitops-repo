@@ -2,13 +2,19 @@ namespace: demo-app-dev
 
 bases:
   - ../../base
+<<<<<<< HEAD
 
 resources:
   - namespace.yaml
 
+=======
+>>>>>>> 95f0514a2781a7540527a8ac3768afe2d1dbe62e
 patchesStrategicMerge:
   - deployment-patch.yaml
-
 images:
   - name: docker.io/aminse82/demo-app
+<<<<<<< HEAD
     newTag: v1-dev
+=======
+    newTag: 47d5e61
+>>>>>>> 95f0514a2781a7540527a8ac3768afe2d1dbe62e
